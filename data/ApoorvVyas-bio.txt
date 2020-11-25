@@ -1,0 +1,11 @@
+Apoorv is currently a third-year Ph.D. student at EPFL and Idiap research
+institute, where he is co-supervised by Prof. Hervé Bourlard  and Prof.
+François Fleuret. He is currently working on the application of deep learning
+to improve the performance of automatic speech recognition (ASR) models with
+limited supervised data.
+
+Prior to joining Idiap, Apoorv received a degree in Bachelor of Technology in
+Electronics & Electrical engineering from the Indian Institute of Technology,
+Guwahati, in 2014. After this, he worked as a Systems Engineer at Intel Labs,
+India. He is a co-inventor on 5 patents and has published at tier-one
+conferences such as ECCV, ICML, Neurips, ICASSP, and Interspeech.

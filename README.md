@@ -1,4 +1,4 @@
-This is the source code to Apoorv Vyas's public academic website. It is based on the template kindly provided by Jon Barron. The link to his website is https://jonbarron.info/. 
+This is the source code to Apoorv Vyas' public academic website. It is based on the template kindly provided by Jon Barron. The link to his website is https://jonbarron.info/. 
 
 The only changes made are to the content and minor change to the stylesheet.
 

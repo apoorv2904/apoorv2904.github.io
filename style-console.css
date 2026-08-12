@@ -1,0 +1,113 @@
+/* ==========================================================================
+   CONSOLE  =  TERMINAL × PIXEL
+   Load order: style.css → style-terminal.css → this file.
+
+   The thing that actually lives at this intersection is the DOS/BBS screen:
+   a bitmap headline over monospace text, framed in CP437 double-line boxes.
+   Borders here are `double` rather than drawn characters — same ╔═╗ read,
+   without stuffing glyphs into the markup.
+   ========================================================================== */
+
+:root {
+  --paper:        #EDEAE0;
+  --surface:      #F7F5EE;
+  --surface-2:    #E0DCCE;
+  --ink:          #1B1A17;
+  --ink-2:        #3A382F;
+  --muted:        #6A6656;
+  --line:         #CFC9B6;
+  --line-strong:  #1B1A17;
+  --accent:       #1F5FA8;
+  --accent-soft:  #DDE6F2;
+  --signal:       #A34E00;
+
+  --font-display: "Silkscreen", "Courier New", monospace;
+}
+
+html[data-theme="dark"] {
+  --paper:        #0C0C10;
+  --surface:      #141419;
+  --surface-2:    #1B1B22;
+  --ink:          #D8D8C8;
+  --ink-2:        #BCBCAC;
+  --muted:        #85857A;
+  --line:         #26262E;
+  --line-strong:  #8A8A7C;
+  --accent:       #55B7FF;
+  --accent-soft:  #10202E;
+  --signal:       #FFB000;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --paper:        #0C0C10;
+    --surface:      #141419;
+    --surface-2:    #1B1B22;
+    --ink:          #D8D8C8;
+    --ink-2:        #BCBCAC;
+    --muted:        #85857A;
+    --line:         #26262E;
+    --line-strong:  #8A8A7C;
+    --accent:       #55B7FF;
+    --accent-soft:  #10202E;
+    --signal:       #FFB000;
+  }
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.nav-name { font-family: var(--font-display); font-size: 0.7rem; }
+
+/* body copy stays monospace, inherited from terminal */
+.pub-title,
+.focus-card h3,
+.role-org { font-family: var(--font-body); }
+
+/* ---- CP437 boxes ---- */
+
+.focus-card,
+.panel,
+.earlier,
+.pub-media {
+  border: 3px double var(--line-strong);
+  border-radius: 0;
+}
+
+.links a,
+.chip,
+.sound-btn,
+.theme-btn,
+.portrait { border-radius: 0; }
+
+.links a { border: 2px solid var(--line-strong); }
+.links a:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+.portrait { border: 3px double var(--line-strong); }
+
+.section-head h2::before { content: "▍ "; opacity: 1; color: var(--signal); }
+
+.focus-card h3::before { content: "░ "; color: var(--signal); }
+
+.wave-rule {
+  background-color: var(--accent);
+  opacity: 1;
+}
+
+/* a screen should look like it is running */
+.wave-rule { animation: wave-flow 12s linear infinite; }
+
+/* the prompt keeps waiting here — Console is a costume, not the landing page */
+.hero-name::after {
+  content: "\258C";
+  margin-left: 0.1em;
+  color: var(--accent);
+  animation: cursor-blink 1.05s steps(2, start) infinite;
+}
+
+@keyframes cursor-blink { to { visibility: hidden; } }

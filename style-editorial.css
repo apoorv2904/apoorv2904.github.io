@@ -1,0 +1,138 @@
+/* ==========================================================================
+   EDITORIAL — load after style.css
+   Serif throughout, larger scale, rules instead of boxes. Closer to a journal
+   page than a product page. The furthest of the four from Bowen's layout.
+   ========================================================================== */
+
+:root {
+  --paper:        #FCFCFC;
+  --surface:      #FFFFFF;
+  --surface-2:    #F2F3F4;
+  --ink:          #111214;
+  --ink-2:        #33363B;
+  --muted:        #62666E;
+  --line:         #E1E3E6;
+  --line-strong:  #A8ACB3;
+  --accent:       #1B3A6B;
+  --accent-soft:  #EAEEF5;
+  --signal:       #7A4418;
+
+  --font-display: "Newsreader", Georgia, serif;
+  --font-body:    "Newsreader", Georgia, serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --max: 780px;      /* tighter measure reads more like print */
+  --radius: 2px;
+}
+
+html[data-theme="dark"] {
+  --paper:        #101215;
+  --surface:      #171A1E;
+  --surface-2:    #1D2126;
+  --ink:          #EAECEF;
+  --ink-2:        #C7CBD1;
+  --muted:        #8D939C;
+  --line:         #262A30;
+  --line-strong:  #474D56;
+  --accent:       #8FB0E0;
+  --accent-soft:  #16202E;
+  --signal:       #D9A06B;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --paper:        #101215;
+    --surface:      #171A1E;
+    --surface-2:    #1D2126;
+    --ink:          #EAECEF;
+    --ink-2:        #C7CBD1;
+    --muted:        #8D939C;
+    --line:         #262A30;
+    --line-strong:  #474D56;
+    --accent:       #8FB0E0;
+    --accent-soft:  #16202E;
+    --signal:       #D9A06B;
+  }
+}
+
+body { font-size: 18px; line-height: 1.72; }
+
+.hero-name {
+  font-size: clamp(2.7rem, 7vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.02;
+}
+
+.hero-role {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.lede { font-size: 1.28rem; line-height: 1.5; }
+
+/* ---- rules, not boxes ---- */
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
+
+.focus-card,
+.panel {
+  border: 0;
+  border-top: 1px solid var(--line-strong);
+  background: none;
+  padding: 12px 0 0;
+}
+
+.earlier { border: 0; border-top: 1px solid var(--line); background: none; }
+.earlier > summary { padding-left: 0; padding-right: 0; font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-size: 0.95rem; font-style: italic; }
+.earlier-body { padding-left: 0; padding-right: 0; }
+
+.links a {
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: none;
+  padding: 1px 0;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.links { gap: 6px 20px; }
+.links a:hover { background: none; color: var(--accent); border-color: var(--accent); }
+
+.chip-venue {
+  background: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+
+.pub-title { font-weight: 600; font-size: 1.16rem; letter-spacing: -0.005em; }
+.pub-authors { font-size: 0.98rem; }
+
+.role-org { font-weight: 600; font-size: 1.12rem; }
+
+/* Kept, but set quietly — a printed page would not shout it. */
+:root { --wave: #C3C7CE; }
+html[data-theme="dark"] { --wave: #363C46; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { --wave: #363C46; }
+}
+.wave-rule {
+  margin-top: 46px;
+}

@@ -20,8 +20,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="skins.js" data-ui="banner"></script>
 
 <script>
   // Applied before paint so the chosen theme does not flash.
@@ -66,15 +67,34 @@
 
   <!-- ============================================================ HERO -->
   <header class="hero">
-    <div>
-      <h1 class="hero-name">Apoorv Vyas</h1>
+    <div class="hero-top">
+      <picture>
+        <source srcset="images/apoorv-vyas.webp" type="image/webp">
+        <img class="portrait" src="images/apoorv-vyas.png" width="180" height="180"
+             alt="Apoorv Vyas">
+      </picture>
 
-      <p class="hero-role">
-        Staff Research Scientist &nbsp;·&nbsp;
-        <a href="https://ai.meta.com/research/">Meta&nbsp;FAIR</a><br>
-        Bay Area, California
-      </p>
+      <div class="hero-id">
+        <h1 class="hero-name">Apoorv Vyas</h1>
 
+        <p class="hero-role">
+          Staff Research Scientist &nbsp;·&nbsp;
+          <a href="https://ai.meta.com/research/">Meta&nbsp;FAIR</a><br>
+          Bay Area, California
+        </p>
+
+        <ul class="links">
+          <li><a href="mailto:apoorv2904@gmail.com">Email</a></li>
+          <li><a href="data/Apoorv_Vyas_CV.pdf">CV</a></li>
+          <li><a href="https://scholar.google.com/citations?user=7EoDBR0AAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><a href="https://github.com/apoorv2904">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/apoorv2904">LinkedIn</a></li>
+          <!-- <li><a href="https://twitter.com/apoorv2904">Twitter / X</a></li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero-bio">
       <p class="lede">
         I train large multimodal models that hear and see — audio, video, and speech at
         the scale where representation learning and generation start to meet.
@@ -99,25 +119,10 @@
       </p>
       -->
 
-      <ul class="links">
-        <li><a href="mailto:apoorv2904@gmail.com">Email</a></li>
-        <li><a href="data/Apoorv_Vyas_CV.pdf">CV</a></li>
-        <li><a href="https://scholar.google.com/citations?user=7EoDBR0AAAAJ&amp;hl=en">Google Scholar</a></li>
-        <li><a href="https://github.com/apoorv2904">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/apoorv2904">LinkedIn</a></li>
-        <!-- <li><a href="https://twitter.com/apoorv2904">Twitter / X</a></li> -->
-      </ul>
-
       <!-- Stamped at deploy time from the CV's git history. Stays hidden
            until then, so a plain local preview shows nothing odd. -->
       <p class="cv-stamp"><!--CV_UPDATED--></p>
     </div>
-
-    <picture>
-      <source srcset="images/apoorv-vyas.webp" type="image/webp">
-      <img class="portrait" src="images/apoorv-vyas.png" width="172" height="172"
-           alt="Apoorv Vyas">
-    </picture>
   </header>
 
   <div class="wave-rule" aria-hidden="true"></div>
@@ -211,11 +216,6 @@
             <a href="https://github.com/facebookresearch/perception_models">code</a>
             <a href="https://huggingface.co/collections/facebook/perception-encoder-audio-visual">models</a>
           </div>
-          <p class="pub-blurb">
-            Proposed and led PE-AV. Scaled the audiovisual data engine to O(100M)
-            captioned videos and ran the ablations on caption quality, loss pairs,
-            and model size.
-          </p>
         </div>
       </article>
 
@@ -249,10 +249,6 @@
             <a href="https://aidemos.meta.com/segment-anything/editor/segment-audio">demo</a>
             <a href="https://github.com/facebookresearch/sam-audio">code</a>
           </div>
-          <p class="pub-blurb">
-            A foundation model for general audio separation that unifies text, visual,
-            and temporal-span prompting in one framework.
-          </p>
         </div>
       </article>
 
@@ -280,11 +276,6 @@
             <a href="https://arxiv.org/abs/2410.13720">paper</a>
             <a href="https://ai.meta.com/research/movie-gen/">blog</a>
           </div>
-          <p class="pub-blurb">
-            On Movie Gen Audio I led scaling de-risking and the UNet-vs-Transformer
-            architecture study, and owned pre- and post-training data curation —
-            funnelling O(2B) videos down to a 100M-scale training set.
-          </p>
         </div>
       </article>
 
@@ -318,10 +309,6 @@
             <a href="https://ai.meta.com/blog/multilingual-model-speech-recognition/">blog</a>
             <a href="https://github.com/facebookresearch/fairseq/blob/main/examples/mms/README.md">code</a>
           </div>
-          <p class="pub-blurb">
-            Speech recognition, synthesis, and language identification extended to over
-            a thousand languages — the clip synthesizes Yoruba, Iloko, and Maithili.
-          </p>
         </div>
       </article>
 
@@ -355,11 +342,6 @@
             <a href="https://ai.meta.com/blog/audiobox-generating-audio-voice-natural-language-prompts/">blog</a>
             <a href="https://audiobox.metademolab.com/">demo</a>
           </div>
-          <p class="pub-blurb">
-            Co-implemented the model and owned the joint speech and sound-effect
-            training behind its unified generation; built the LLM-captioning,
-            augmentation, and annotation quality-control pipelines.
-          </p>
         </div>
       </article>
 
@@ -392,10 +374,6 @@
             <a href="https://arxiv.org/abs/2306.15687">paper</a>
             <a href="https://voicebox.metademolab.com/">blog</a>
           </div>
-          <p class="pub-blurb">
-            Implemented the Transformer backbone and duration model, and ran the
-            multilingual experiments.
-          </p>
         </div>
       </article>
 
@@ -422,10 +400,6 @@
             <a href="https://colab.research.google.com/drive/1E8BYQf3Puxb643LOyIjT-0m3yXGO28ev?usp=sharing">colab</a>
             <a href="https://github.com/idiap/fast-transformers">code</a>
           </div>
-          <p class="pub-blurb">
-            Clusters queries so attention scales to long sequences without computing
-            the full matrix.
-          </p>
         </div>
       </article>
 
@@ -454,10 +428,6 @@
             <a href="https://colab.research.google.com/drive/1BV4OaWRAHYGeimO0cqHD86GfnfgUaKD4?usp=sharing">colab</a>
             <a href="https://github.com/idiap/fast-transformers">code</a>
           </div>
-          <p class="pub-blurb">
-            A kernelized formulation that expresses autoregressive Transformers as
-            RNNs and cuts attention to linear cost.
-          </p>
         </div>
       </article>
 
@@ -481,10 +451,6 @@
           <div class="pub-links">
             <a href="https://arxiv.org/abs/1809.03576">paper</a>
           </div>
-          <p class="pub-blurb">
-            Detects out-of-distribution inputs with an ensemble of leave-out
-            classifiers trained by entropy maximization.
-          </p>
         </div>
       </article>
 
@@ -685,6 +651,8 @@
     </div>
   </section>
 
+  <div class="wave-rule wave-rule--end" aria-hidden="true"></div>
+
   <footer class="footer">
     <span>© 2026 Apoorv Vyas</span>
     <span><a href="mailto:apoorv2904@gmail.com">apoorv2904@gmail.com</a></span>
@@ -775,6 +743,8 @@
     });
   })();
 </script>
+
+<script src="konami.js" defer></script>
 
 <script type="application/ld+json">
 {

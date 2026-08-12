@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apoorv Vyas — Terminal</title>
+
+<meta name="author" content="Apoorv Vyas">
+<meta name="description" content="Apoorv Vyas is a Staff Research Scientist at Meta FAIR working on multimodal representation learning, large-scale audio and video generation, and efficient Transformers.">
+
+<link rel="canonical" href="https://apoorv2904.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Apoorv Vyas">
+<meta property="og:description" content="Staff Research Scientist at Meta FAIR. Multimodal representation learning, large-scale audio generation, efficient Transformers.">
+<meta property="og:url" content="https://apoorv2904.github.io/">
+<meta property="og:image" content="https://apoorv2904.github.io/images/social-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style-terminal.css">
+
+<script>
+  // Applied before paint so the chosen theme does not flash.
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<style>
+  .abbar{position:fixed;left:0;right:0;bottom:0;z-index:150;display:flex;align-items:stretch;
+    font-family:ui-monospace,Menlo,monospace;font-size:11px;background:#14171C;color:#9AA1AE;
+    border-top:1px solid #000}
+  .abbar b{padding:9px 13px;font-weight:500;color:#6C7280;letter-spacing:.08em;
+    text-transform:uppercase;white-space:nowrap;position:sticky;left:0;background:#14171C}
+  .abbar a{padding:9px 13px;color:#C7CBD3;text-decoration:none;border-left:1px solid #23272F;white-space:nowrap}
+  .abbar a:hover{background:#1D222A;color:#fff}
+  .abbar a.on{background:#2C3BD1;color:#fff}
+  .abbar em{padding:9px 14px;font-style:normal;color:#5A606B;white-space:nowrap}
+  body{padding-bottom:42px}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="#top">Apoorv&nbsp;Vyas</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience" class="nav-opt">Experience</a>
+      <a href="#news" class="nav-opt">News</a>
+      <a href="data/Apoorv_Vyas_CV.pdf">CV</a>
+    </div>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch between light and dark theme">
+      <svg class="icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+      </svg>
+      <svg class="icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+<div class="wrap" id="top">
+
+  <!-- ============================================================ HERO -->
+  <header class="hero">
+    <div class="hero-top">
+      <picture>
+        <source srcset="images/apoorv-vyas.webp" type="image/webp">
+        <img class="portrait" src="images/apoorv-vyas.png" width="180" height="180"
+             alt="Apoorv Vyas">
+      </picture>
+
+      <div class="hero-id">
+        <h1 class="hero-name">Apoorv Vyas</h1>
+
+        <p class="hero-role">
+          Staff Research Scientist &nbsp;·&nbsp;
+          <a href="https://ai.meta.com/research/">Meta&nbsp;FAIR</a><br>
+          Bay Area, California
+        </p>
+
+        <ul class="links">
+          <li><a href="mailto:apoorv2904@gmail.com">Email</a></li>
+          <li><a href="data/Apoorv_Vyas_CV.pdf">CV</a></li>
+          <li><a href="https://scholar.google.com/citations?user=7EoDBR0AAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><a href="https://github.com/apoorv2904">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/apoorv2904">LinkedIn</a></li>
+          <!-- <li><a href="https://twitter.com/apoorv2904">Twitter / X</a></li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero-bio">
+      <p class="lede">
+        I train large multimodal models that hear and see — audio, video, and speech at
+        the scale where representation learning and generation start to meet.
+      </p>
+
+      <p>
+        At Meta I proposed and led <strong>PE-AV</strong>, a family of audio–video–text
+        aligned encoders, and worked on the audio side of
+        <strong>Movie&nbsp;Gen</strong>, <strong>Audiobox</strong>,
+        <strong>Voicebox</strong>, <strong>SAM&nbsp;Audio</strong>, and
+        <strong>MMS</strong>. Before that I did my PhD at
+        <a href="https://www.epfl.ch/en/">EPFL</a> and
+        <a href="https://www.idiap.ch/en">Idiap</a> with
+        <a href="https://people.idiap.ch/bourlard">Hervé Bourlard</a> and
+        <a href="https://fleuret.org/francois/">François Fleuret</a>, where linear and
+        clustered attention came out of trying to make speech recognition cheaper.
+      </p>
+
+      <!-- Uncomment when you want the job search to be public:
+      <p class="lede" style="color:var(--signal)">
+        I'm currently exploring new research roles — please get in touch.
+      </p>
+      -->
+
+      <!-- Stamped at deploy time from the CV's git history. Stays hidden
+           until then, so a plain local preview shows nothing odd. -->
+      <p class="cv-stamp"><!--CV_UPDATED--></p>
+    </div>
+  </header>
+
+  <div class="wave-rule" aria-hidden="true"></div>
+
+  <!-- ======================================================== RESEARCH -->
+  <section class="section" id="research">
+    <div class="section-head"><h2>Research</h2></div>
+
+    <div class="focus">
+      <article class="focus-card">
+        <h3>Multimodal representation learning</h3>
+        <p>Joint embeddings across audio, video, and text, and the data engines
+           that make contrastive training work at 100M-video scale.</p>
+      </article>
+      <article class="focus-card">
+        <h3>Large-scale generative training</h3>
+        <p>Speech and sound generation from text, video, or voice prompts —
+           architecture studies, scaling de-risking, and data curation.</p>
+      </article>
+      <article class="focus-card">
+        <h3>Efficient Transformers</h3>
+        <p>Attention that stays affordable on long sequences: linear attention
+           as an RNN, and clustered attention over queries.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================ NEWS -->
+  <section class="section" id="news">
+    <div class="section-head"><h2>News</h2></div>
+
+    <div class="news">
+      <div class="news-item">
+        <div class="news-date">2026</div>
+        <p>PE-AV accepted to <strong>CVPR 2026</strong>; SAM Audio accepted to
+           <strong>ICML 2026</strong>.</p>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Dec 2025</div>
+        <p>Released <a href="https://arxiv.org/abs/2512.19687">PE-AV</a> — audio–video–text
+           encoders, with
+           <a href="https://github.com/facebookresearch/perception_models">code</a> and
+           <a href="https://huggingface.co/collections/facebook/perception-encoder-audio-visual">open weights</a>.</p>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Dec 2025</div>
+        <p>Our team launched <a href="https://ai.meta.com/samaudio/">SAM Audio</a>,
+           extending Segment Anything to audio separation.</p>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Oct 2024</div>
+        <p><a href="https://ai.meta.com/research/movie-gen/">Movie Gen</a> released,
+           including the video-conditioned audio model.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== PUBLICATIONS -->
+  <section class="section" id="publications">
+    <div class="section-head">
+      <h2>Selected publications</h2>
+      <span class="section-note">Full list on
+        <a href="https://scholar.google.com/citations?user=7EoDBR0AAAAJ&amp;hl=en">Google Scholar</a></span>
+    </div>
+
+    <div class="pubs">
+
+      <!-- PE-AV -->
+      <article class="pub">
+        <a class="pub-media is-zoom" href="images/pe-av-results.jpg"
+           aria-label="Open the PE-AV benchmark figure at full size">
+          <img src="images/pe-av-results.jpg" width="1921" height="1080" loading="lazy"
+               alt="Zero-shot benchmark results for PE-AV across sound and music, speech, and video tasks">
+        </a>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2512.19687">Pushing the Frontier of Audiovisual
+            Perception with Large-Scale Multimodal Correspondence Learning</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="me">Apoorv Vyas</span>, Heng-Jui Chang, Cheng-Fu Yang,
+            Po-Yao Huang, Luya Gao, Julius Richter, Sanyuan Chen, Matt Le,
+            Piotr Dollár, Christoph Feichtenhofer, Ann Lee, Wei-Ning Hsu
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">CVPR 2026</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2512.19687">paper</a>
+            <a href="https://ai.meta.com/research/publications/pushing-the-frontier-of-audiovisual-perception-with-large-scale-multimodal-correspondence-learning/">blog</a>
+            <a href="https://github.com/facebookresearch/perception_models">code</a>
+            <a href="https://huggingface.co/collections/facebook/perception-encoder-audio-visual">models</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SAM Audio -->
+      <article class="pub">
+        <div class="pub-media" data-playable>
+          <video muted loop playsinline preload="none" poster="images/poster-sam-audio.jpg"
+                 aria-label="SAM Audio demo clip">
+            <source src="media/sam-audio.mp4" type="video/mp4">
+          </video>
+          <button class="sound-btn" type="button" aria-label="Play this clip with sound">
+            <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+            <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2512.18099">SAM Audio: Segment Anything in Audio</a>
+          </h3>
+          <p class="pub-authors">
+            Bowen Shi, Andros Tjandra, John Hoffman, Helin Wang, Yi-Chiao Wu, Luya Gao,
+            Julius Richter, Matt Le, <span class="me">Apoorv Vyas</span>, Sanyuan Chen,
+            Christoph Feichtenhofer, Piotr Dollár, Wei-Ning Hsu, Ann Lee
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">ICML 2026</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2512.18099">paper</a>
+            <a href="https://ai.meta.com/samaudio/">blog</a>
+            <a href="https://aidemos.meta.com/segment-anything/editor/segment-audio">demo</a>
+            <a href="https://github.com/facebookresearch/sam-audio">code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Movie Gen -->
+      <article class="pub">
+        <div class="pub-media" data-playable>
+          <video muted loop playsinline preload="none" poster="images/poster-movie-gen.jpg"
+                 aria-label="Movie Gen Audio demo clip">
+            <source src="media/movie-gen.mp4" type="video/mp4">
+          </video>
+          <button class="sound-btn" type="button" aria-label="Play this clip with sound">
+            <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+            <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2410.13720">Movie Gen: A Cast of Media Foundation Models</a>
+          </h3>
+          <p class="pub-authors">The Movie Gen Team</p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">Tech report 2024</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2410.13720">paper</a>
+            <a href="https://ai.meta.com/research/movie-gen/">blog</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MMS -->
+      <article class="pub">
+        <div class="pub-media" data-playable>
+          <video muted loop playsinline preload="none" poster="images/poster-mms.jpg"
+                 aria-label="MMS text-to-speech demo across low-resource languages">
+            <source src="media/mms.mp4" type="video/mp4">
+          </video>
+          <button class="sound-btn" type="button" aria-label="Play this clip with sound">
+            <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+            <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2305.13516">Scaling Speech Technology to 1,000+ Languages</a>
+          </h3>
+          <p class="pub-authors">
+            Vineel Pratap, Andros Tjandra, Bowen Shi, Paden Tomasello, Arun Babu,
+            Sayani Kundu, Ali Elkahky, Zhaoheng Ni, <span class="me">Apoorv Vyas</span>,
+            Maryam Fazel-Zarandi, Alexei Baevski, Yossi Adi, Xiaohui Zhang,
+            Wei-Ning Hsu, Alexis Conneau, Michael Auli
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">JMLR 2024</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2305.13516">paper</a>
+            <a href="https://ai.meta.com/blog/multilingual-model-speech-recognition/">blog</a>
+            <a href="https://github.com/facebookresearch/fairseq/blob/main/examples/mms/README.md">code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Audiobox -->
+      <article class="pub">
+        <div class="pub-media" data-playable>
+          <video muted loop playsinline preload="none" poster="images/poster-audiobox.jpg"
+                 aria-label="Audiobox demo clip">
+            <source src="media/audiobox.mp4" type="video/mp4">
+          </video>
+          <button class="sound-btn" type="button" aria-label="Play this clip with sound">
+            <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+            <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2312.15821">Audiobox: Unified Audio Generation
+            with Natural Language Prompts</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="me">Apoorv Vyas</span>, Bowen Shi, Matthew Le, Andros Tjandra,
+            Yi-Chiao Wu, Baishan Guo, Jiemin Zhang, Xinyue Zhang, Robert Adkins,
+            William Ngan, Jeff Wang, Ivan Cruz, et al.
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">Tech report 2023</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2312.15821">paper</a>
+            <a href="https://ai.meta.com/blog/audiobox-generating-audio-voice-natural-language-prompts/">blog</a>
+            <a href="https://audiobox.metademolab.com/">demo</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Voicebox -->
+      <article class="pub">
+        <div class="pub-media" data-playable>
+          <video muted loop playsinline preload="none" poster="images/poster-voicebox.jpg"
+                 aria-label="Voicebox demo clip">
+            <source src="media/voicebox.mp4" type="video/mp4">
+          </video>
+          <button class="sound-btn" type="button" aria-label="Play this clip with sound">
+            <svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+            <svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2306.15687">Voicebox: Text-Guided Multilingual
+            Universal Speech Generation at Scale</a>
+          </h3>
+          <p class="pub-authors">
+            Matthew Le, <span class="me">Apoorv Vyas</span>, Bowen Shi, Brian Karrer,
+            Leda Sari, Rashel Moritz, Mary Williamson, Vimal Manohar, Yossi Adi,
+            Jay Mahadeokar, Wei-Ning Hsu
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">NeurIPS 2023</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2306.15687">paper</a>
+            <a href="https://voicebox.metademolab.com/">blog</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Clustered attention -->
+      <article class="pub">
+        <div class="pub-media">
+          <img src="images/neurips_2020_fast.jpg" alt="" loading="lazy">
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2007.04825">Fast Transformers with Clustered Attention</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="me">Apoorv Vyas</span>,
+            <a href="https://angeloskath.github.io/">Angelos Katharopoulos</a>,
+            <a href="https://fleuret.org/francois/">François Fleuret</a>
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">NeurIPS 2020</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2007.04825">paper</a>
+            <a href="https://clustered-transformers.github.io/blog">blog</a>
+            <a href="https://colab.research.google.com/drive/1E8BYQf3Puxb643LOyIjT-0m3yXGO28ev?usp=sharing">colab</a>
+            <a href="https://github.com/idiap/fast-transformers">code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Linear attention -->
+      <article class="pub">
+        <div class="pub-media">
+          <img src="images/icml_2020_transformers.jpg" alt="" loading="lazy">
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2006.16236">Transformers are RNNs: Fast
+            Autoregressive Transformers with Linear Attention</a>
+          </h3>
+          <p class="pub-authors">
+            <a href="https://angeloskath.github.io/">Angelos Katharopoulos</a>,
+            <span class="me">Apoorv Vyas</span>,
+            <a href="https://nik0spapp.github.io/">Nikolaos Pappas</a>,
+            <a href="https://fleuret.org/francois/">François Fleuret</a>
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">ICML 2020</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2006.16236">paper</a>
+            <a href="https://youtu.be/KBWh7XCUAi8">video</a>
+            <a href="https://colab.research.google.com/drive/1BV4OaWRAHYGeimO0cqHD86GfnfgUaKD4?usp=sharing">colab</a>
+            <a href="https://github.com/idiap/fast-transformers">code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- OOD -->
+      <article class="pub">
+        <div class="pub-media">
+          <img src="images/eccv_2018_ood.jpg" alt="" loading="lazy">
+        </div>
+        <div>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/1809.03576">Out-of-Distribution Detection Using
+            an Ensemble of Self-Supervised Leave-out Classifiers</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="me">Apoorv Vyas</span>, Nataraj Jammalamadaka, Xia Zhu,
+            Dipankar Das, Bharat Kaul, Theodore L. Willke
+          </p>
+          <div class="pub-meta">
+            <span class="chip chip-venue">ECCV 2018</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/1809.03576">paper</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ------------------------------------------------ earlier work -->
+    <details class="earlier">
+      <summary>Earlier work — speech recognition and sensing, 2014–2021</summary>
+      <div class="earlier-body">
+
+        <article class="pub-sm">
+          <div class="pub-media"><img src="images/wav2vec2.JPG" alt="" loading="lazy"></div>
+          <div>
+            <h3 class="pub-title">
+              <a href="https://arxiv.org/abs/2104.02558">Comparing CTC and LFMMI for
+              Out-of-Domain Adaptation of wav2vec 2.0 Acoustic Models</a>
+            </h3>
+            <p class="pub-authors">
+              <span class="me">Apoorv Vyas</span>, Srikanth Madikeri, Hervé Bourlard
+            </p>
+            <div class="pub-meta"><span class="chip chip-venue">Interspeech 2021</span></div>
+            <div class="pub-links"><a href="https://arxiv.org/abs/2104.02558">paper</a></div>
+          </div>
+        </article>
+
+        <article class="pub-sm">
+          <div class="pub-media"><img src="images/arxiv_2020_lfmmi.JPG" alt="" loading="lazy"></div>
+          <div>
+            <h3 class="pub-title">
+              <a href="https://arxiv.org/abs/2012.14252">Lattice-Free MMI Adaptation of
+              Self-Supervised Pretrained Acoustic Models</a>
+            </h3>
+            <p class="pub-authors">
+              <span class="me">Apoorv Vyas</span>, Srikanth Madikeri, Hervé Bourlard
+            </p>
+            <div class="pub-meta"><span class="chip chip-venue">ICASSP 2021</span></div>
+            <div class="pub-links">
+              <a href="https://arxiv.org/abs/2012.14252">paper</a>
+              <a href="https://github.com/idiap/apam">code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-sm">
+          <div class="pub-media"><img src="images/interspeech_2019_unbiassed.jpg" alt="" loading="lazy"></div>
+          <div>
+            <h3 class="pub-title">
+              <a href="https://www.isca-archive.org/interspeech_2019/tong19b_interspeech.html">Unbiased
+              Semi-supervised LF-MMI Training Using Dropout</a>
+            </h3>
+            <p class="pub-authors">
+              Sibo Tong, <span class="me">Apoorv Vyas</span>,
+              <a href="https://pgarner.github.io/">Philip N. Garner</a>, Hervé Bourlard
+            </p>
+            <div class="pub-meta"><span class="chip chip-venue">Interspeech 2019</span></div>
+            <div class="pub-links">
+              <a href="https://www.isca-archive.org/interspeech_2019/tong19b_interspeech.html">paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-sm">
+          <div class="pub-media"><img src="images/icassp_2019_analyzing.jpg" alt="" loading="lazy"></div>
+          <div>
+            <h3 class="pub-title">
+              <a href="https://ieeexplore.ieee.org/document/8683086">Analyzing Uncertainties
+              in Speech Recognition Using Dropout</a>
+            </h3>
+            <p class="pub-authors">
+              <span class="me">Apoorv Vyas</span>, Pranay Dighe, Sibo Tong, Hervé Bourlard
+            </p>
+            <div class="pub-meta"><span class="chip chip-venue">ICASSP 2019</span></div>
+            <div class="pub-links">
+              <a href="https://ieeexplore.ieee.org/document/8683086">paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-sm">
+          <div class="pub-media"><img src="images/wfiot_2016_cs.jpg" alt="" loading="lazy"></div>
+          <div>
+            <h3 class="pub-title">
+              <a href="https://ieeexplore.ieee.org/document/7845493">Power Efficient
+              Compressive Sensing for Continuous Monitoring of ECG and PPG in a
+              Wearable System</a>
+            </h3>
+            <p class="pub-authors">
+              Vijay Natarajan, <span class="me">Apoorv Vyas</span>
+            </p>
+            <div class="pub-meta"><span class="chip chip-venue">WF-IoT 2016</span></div>
+            <div class="pub-links">
+              <a href="https://ieeexplore.ieee.org/document/7845493">paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-sm">
+          <div class="pub-media"><img src="images/icvgip_2014_commercial.jpg" alt="" loading="lazy"></div>
+          <div>
+            <h3 class="pub-title">Commercial Block Detection in Broadcast News Videos</h3>
+            <p class="pub-authors">
+              <span class="me">Apoorv Vyas</span>, Raghvendra Kannao, Vishal Bhargava,
+              <a href="https://www.iitg.ac.in/eee/pguha.html">Prithwijit Guha</a>
+            </p>
+            <div class="pub-meta"><span class="chip chip-venue">ICVGIP 2014</span></div>
+            <div class="pub-links">
+              <a href="https://dl.acm.org/doi/10.1145/2683483.2683546">paper</a>
+            </div>
+          </div>
+        </article>
+
+        <p class="pub-blurb" style="margin:0">
+          Also: <em>Pkwrap: a PyTorch Package for LF-MMI Training of Acoustic Models</em>
+          (Madikeri, Tong, Zuluaga-Gomez, <strong>Vyas</strong>, Motlicek, Bourlard) —
+          <a href="https://arxiv.org/abs/2010.03466">paper</a> ·
+          <a href="https://github.com/idiap/pkwrap">code</a>.
+        </p>
+
+      </div>
+    </details>
+  </section>
+
+  <!-- ====================================================== EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-head"><h2>Experience</h2></div>
+
+    <div class="roles">
+
+      <article class="role">
+        <h3 class="role-org">Meta — FAIR (Fundamental AI Research)</h3>
+        <div class="role-when">Nov 2022 — Present · Menlo Park, CA</div>
+        <p class="role-titles">
+          Staff Research Scientist (2026–) · Senior Research Scientist (2024–26) ·
+          Research Scientist (2022–24)
+        </p>
+        <ul class="role-body">
+          <li><strong>Multimodal representation learning.</strong> Proposed and led PE-AV,
+            a family of audio–video–text aligned encoders trained with contrastive learning
+            scaled on caption quality, data types, loss pairs, and model size. Ran the early
+            ablations, scaled the data pipeline to 100M videos, and directed workstreams as
+            the effort grew from 2 to 6 researchers.</li>
+          <li><strong>Multimodal post-training.</strong> Integrated audio and speech
+            recognition into a joint text–perception model; designed and ran the ablations
+            behind the integration approach and drove the work to retain model quality.</li>
+          <li><strong>Large-scale audio generation.</strong> Movie Gen Audio, Audiobox,
+            and Voicebox — architecture studies, scaling de-risking, data curation, and
+            the joint speech and sound-effect training behind unified generation.</li>
+        </ul>
+      </article>
+
+      <article class="role">
+        <h3 class="role-org">Idiap Research Institute / EPFL</h3>
+        <div class="role-when">Jul 2018 — Aug 2022 · Switzerland</div>
+        <p class="role-titles">
+          Doctoral Researcher — Thesis: <em>Efficient Transformer-Based Speech Recognition</em>
+        </p>
+        <ul class="role-body">
+          <li><strong>Compute efficiency.</strong> Linear attention, a kernelized formulation
+            expressing autoregressive Transformers as RNNs at linear cost, and clustered
+            attention, which approximates self-attention via input clustering.</li>
+          <li><strong>Data efficiency.</strong> Uncertainty-aware semi-supervised learning
+            via dropout, and cross-domain and cross-lingual analysis of SSL pretraining.</li>
+        </ul>
+      </article>
+
+      <article class="role">
+        <h3 class="role-org">Intel Labs</h3>
+        <div class="role-when">Apr 2015 — May 2018 · India</div>
+        <p class="role-titles">Research / Systems Engineer</p>
+        <ul class="role-body">
+          <li>Ensemble method for out-of-distribution detection in deep networks.</li>
+          <li>Low-power supervised semantic hashing for approximate image retrieval.</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ======================================================= EDUCATION -->
+  <section class="section" id="education">
+    <div class="section-head"><h2>Education &amp; service</h2></div>
+
+    <div class="two-col">
+      <div class="panel">
+        <h3>Education</h3>
+        <p><strong>PhD, Electrical Engineering</strong>
+          <span class="sub">EPFL · 2018–2022</span></p>
+        <p><strong>B.Tech, Electronics &amp; Electrical Engineering</strong>
+          <span class="sub">IIT Guwahati · 2010–2014</span></p>
+      </div>
+      <div class="panel">
+        <h3>Patents &amp; service</h3>
+        <p><strong>9 granted US patents</strong>
+          <span class="sub">5 at Intel · 4 at Meta</span></p>
+        <p><strong>Reviewer</strong>
+          <span class="sub">NeurIPS · ICLR · ICML · CVPR · ECCV · AAAI · TNNLS</span></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave-rule wave-rule--end" aria-hidden="true"></div>
+
+  <footer class="footer">
+    <span>© 2026 Apoorv Vyas</span>
+    <span><a href="mailto:apoorv2904@gmail.com">apoorv2904@gmail.com</a></span>
+  </footer>
+
+</div>
+</main>
+
+<script>
+  // Theme toggle -------------------------------------------------------
+  (function () {
+    var btn = document.getElementById("theme-btn");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var root = document.documentElement;
+      var current = root.getAttribute("data-theme");
+      if (!current) {
+        current = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      var next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  })();
+
+  // Publication clips ---------------------------------------------------
+  // Hover previews the clip muted. The sound button is the point though:
+  // these are audio papers, so a silent preview only tells half the story.
+  (function () {
+    var boxes = [].slice.call(document.querySelectorAll(".pub-media[data-playable]"));
+    var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function silence(except) {
+      boxes.forEach(function (b) {
+        if (b === except) return;
+        var v = b.querySelector("video");
+        if (!v) return;
+        v.pause();
+        v.muted = true;
+        b.classList.remove("is-playing", "has-sound");
+      });
+    }
+
+    boxes.forEach(function (box) {
+      var vid = box.querySelector("video");
+      var btn = box.querySelector(".sound-btn");
+      if (!vid) return;
+
+      function start() {
+        var p = vid.play();
+        if (p && p.catch) p.catch(function () {});
+        box.classList.add("is-playing");
+      }
+
+      function stop() {
+        if (box.classList.contains("has-sound")) return;  // audible: let it run
+        vid.pause();
+        box.classList.remove("is-playing");
+      }
+
+      if (!calm) {
+        box.addEventListener("mouseenter", start);
+        box.addEventListener("mouseleave", stop);
+        box.addEventListener("focusin", start);
+        box.addEventListener("focusout", stop);
+      }
+
+      if (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var on = box.classList.toggle("has-sound");
+          if (on) {
+            silence(box);
+            vid.muted = false;
+            btn.setAttribute("aria-label", "Mute this clip");
+            start();
+          } else {
+            vid.muted = true;
+            btn.setAttribute("aria-label", "Play this clip with sound");
+          }
+        });
+      }
+
+      vid.addEventListener("ended", function () {
+        box.classList.remove("is-playing");
+      });
+    });
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Apoorv Vyas",
+  "url": "https://apoorv2904.github.io/",
+  "image": "https://apoorv2904.github.io/images/apoorv-vyas.png",
+  "jobTitle": "Staff Research Scientist",
+  "worksFor": { "@type": "Organization", "name": "Meta" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "EPFL" },
+    { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Guwahati" }
+  ],
+  "knowsAbout": [
+    "Multimodal representation learning",
+    "Audio generation",
+    "Speech recognition",
+    "Efficient Transformers"
+  ],
+  "sameAs": [
+    "https://scholar.google.com/citations?user=7EoDBR0AAAAJ&hl=en",
+    "https://github.com/apoorv2904",
+    "https://www.linkedin.com/in/apoorv2904"
+  ]
+}
+</script>
+
+<div class="abbar"><b>Style</b><a href="preview-zine.html">Zine</a><a href="preview-terminal.html" class="on">Terminal</a><a href="preview-signal.html">Signal</a><a href="preview-console.html">Console</a><a href="preview-phosphor.html">Phosphor</a><a href="preview-arcade.html">Arcade</a><a href="preview-pixel.html">Pixel</a><a href="preview-handheld.html">Handheld</a><a href="preview-editorial.html">Editorial</a><em>monospace</em></div>
+</body>
+</html>

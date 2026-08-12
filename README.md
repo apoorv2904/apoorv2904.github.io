@@ -13,6 +13,32 @@ data/               CV PDF
 .github/workflows/  deploy + CV date stamping
 ```
 
+## Trying styles
+
+Four looks share the same `index.html` structure. Open any of these locally and
+use the bar at the bottom to switch:
+
+| file | loads | character |
+|---|---|---|
+| `preview-signal.html` | base | current — Archivo + serif, indigo/amber |
+| `preview-pixel.html` | + pixel | 8-bit name and ornament, readable body |
+| `preview-terminal.html` | + terminal | monospace throughout, shell markers |
+| `preview-editorial.html` | + editorial | serif, journal-like, rules not boxes |
+| `preview-arcade.html` | + arcade | CRT cabinet — scanlines, neon, dark only |
+| `preview-console.html` | + terminal + console | **terminal × pixel** — DOS / BBS, double-line boxes |
+| `preview-phosphor.html` | + terminal + phosphor | **terminal × arcade** — amber VT220 tube |
+| `preview-handheld.html` | + pixel + handheld | **pixel × arcade** — Game Boy DMG, four shades |
+
+The three hybrids literally load both parent sheets and then a small third file
+that resolves the overlap, so they stay in sync if a parent changes.
+
+The theme sheets are **overrides layered on `style.css`**, not replacements —
+they redefine design tokens and a handful of components, so responsive
+behaviour, dark mode, and print stay identical across all four.
+
+Once you pick one: point `index.html` at that stylesheet (and its webfont link),
+then delete the `preview-*.html` files and the sheets you didn't choose.
+
 ## Updating
 
 **Add a publication.** Copy an existing `<article class="pub">` block at the top

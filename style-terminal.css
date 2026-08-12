@@ -1,0 +1,109 @@
+/* ==========================================================================
+   TERMINAL — load after style.css
+   Monospace throughout, structural punctuation borrowed from a shell.
+   Reads as an ML engineer's page; very legible, low risk.
+   ========================================================================== */
+
+:root {
+  --paper:        #FAFAF7;
+  --surface:      #FFFFFF;
+  --surface-2:    #F0F0EB;
+  --ink:          #1A1A1A;
+  --ink-2:        #35353A;
+  --muted:        #6B6B72;
+  --line:         #E0E0D8;
+  --line-strong:  #B8B8AE;
+  --accent:       #9A4B08;
+  --accent-soft:  #F7EDE1;
+  --signal:       #1F5F52;
+
+  --font-display: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body:    "IBM Plex Mono", ui-monospace, monospace;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --max: 920px;      /* monospace runs long; give the measure room */
+  --radius: 3px;
+}
+
+html[data-theme="dark"] {
+  --paper:        #0E0F0D;
+  --surface:      #161815;
+  --surface-2:    #1D201C;
+  --ink:          #E4E6DF;
+  --ink-2:        #C6C9C0;
+  --muted:        #8A8F84;
+  --line:         #262A24;
+  --line-strong:  #444A40;
+  --accent:       #E3A055;
+  --accent-soft:  #241C13;
+  --signal:       #6FD3B8;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --paper:        #0E0F0D;
+    --surface:      #161815;
+    --surface-2:    #1D201C;
+    --ink:          #E4E6DF;
+    --ink-2:        #C6C9C0;
+    --muted:        #8A8F84;
+    --line:         #262A24;
+    --line-strong:  #444A40;
+    --accent:       #E3A055;
+    --accent-soft:  #241C13;
+    --signal:       #6FD3B8;
+  }
+}
+
+body { font-size: 15px; line-height: 1.68; }
+
+.hero-name {
+  font-size: clamp(2rem, 5.4vw, 2.9rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.lede { font-size: 1.02rem; }
+
+/* ---- shell punctuation as structure ---- */
+
+.section-head h2::before { content: "## "; opacity: 0.55; }
+
+.nav-links a::before { content: "/"; opacity: 0.45; margin-right: 1px; }
+
+.pub-links a::before { content: "→ "; opacity: 0.55; }
+
+.chip-venue {
+  background: none;
+  border: 0;
+  padding-left: 0;
+  padding-right: 0;
+  color: var(--accent);
+}
+.chip-venue::before { content: "["; }
+.chip-venue::after  { content: "]"; }
+
+.earlier > summary::before { content: "$"; }
+.earlier[open] > summary::before { content: "$"; opacity: 0.45; }
+
+.role-body li::before {
+  content: "·";
+  background: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  top: 0;
+  color: var(--line-strong);
+}
+
+.focus-card h3::before { content: "> "; color: var(--accent); }
+
+/* a readout trace rather than an ornament: thinner, tinted toward the accent */
+:root { --wave: #B0895E; }
+html[data-theme="dark"] { --wave: #6B5A3F; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { --wave: #6B5A3F; }
+}
+/* Shape matches every other skin; only colour and tempo differ.
+   28s is deliberately near-subliminal — this is the landing page. */
+.wave-rule { animation: wave-flow 28s linear infinite; }

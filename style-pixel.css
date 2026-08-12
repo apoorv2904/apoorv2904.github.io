@@ -1,0 +1,114 @@
+/* ==========================================================================
+   PIXEL — load after style.css
+   8-bit where it costs nothing (name, ornament, edges), normal typography
+   where legibility matters (body, publication titles). A recruiter should
+   never have to decode a headline.
+   ========================================================================== */
+
+:root {
+  --paper:        #F2F2EF;
+  --surface:      #FFFFFF;
+  --surface-2:    #E7E7E2;
+  --ink:          #16161D;
+  --ink-2:        #3A3A46;
+  --muted:        #62626F;
+  --line:         #D6D6CF;
+  --line-strong:  #16161D;
+  --accent:       #3B3BD6;
+  --accent-soft:  #E2E2FA;
+  --signal:       #A35A08;
+
+  --font-display: "Silkscreen", "Courier New", monospace;
+  --font-body:    "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius: 0px;
+}
+
+html[data-theme="dark"] {
+  --paper:        #0B0C10;
+  --surface:      #14161C;
+  --surface-2:    #1B1E26;
+  --ink:          #E6E6F0;
+  --ink-2:        #C0C2CE;
+  --muted:        #878B99;
+  --line:         #2A2E38;
+  --line-strong:  #6E7385;
+  --accent:       #8C8CFF;
+  --accent-soft:  #1B1E33;
+  --signal:       #F0A93F;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --paper:        #0B0C10;
+    --surface:      #14161C;
+    --surface-2:    #1B1E26;
+    --ink:          #E6E6F0;
+    --ink-2:        #C0C2CE;
+    --muted:        #878B99;
+    --line:         #2A2E38;
+    --line-strong:  #6E7385;
+    --accent:       #8C8CFF;
+    --accent-soft:  #1B1E33;
+    --signal:       #F0A93F;
+  }
+}
+
+/* ---- the one pixel headline ---- */
+
+.hero-name {
+  font-weight: 700;   /* Silkscreen has 400 and 700; pin it */
+  font-size: clamp(1.6rem, 4.2vw, 2.5rem);   /* Silkscreen runs wide */
+  letter-spacing: 0;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.nav-name { font-family: var(--font-display); font-size: 0.72rem; }
+
+/* Everything else keeps a readable face. */
+.pub-title,
+.focus-card h3,
+.role-org { font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+
+.lede { font-size: 1.06rem; }
+
+/* ---- hard edges everywhere ---- */
+
+.focus-card,
+.panel,
+.earlier,
+.pub-media,
+.links a,
+.chip,
+.sound-btn,
+.theme-btn { border-radius: 0; }
+
+.focus-card,
+.panel,
+.earlier,
+.pub-media { border-width: 2px; border-color: var(--line-strong); }
+
+.links a { border-width: 2px; border-color: var(--line-strong); }
+.links a:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+
+.chip-venue { border: 2px solid var(--accent); background: none; }
+
+.portrait {
+  border-radius: 0;
+  border: 3px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.role-body li::before { border-radius: 0; width: 6px; height: 6px; background: var(--accent); }
+
+/* ---- pixel divider: chunky 3px grid ---- */
+
+.wave-rule {
+  animation: wave-flow 18s linear infinite;
+  background-color: var(--wave);
+  opacity: 1;
+}
+
+img, video { image-rendering: auto; }   /* keep the portrait and figures sharp */

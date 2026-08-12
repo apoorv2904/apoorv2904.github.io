@@ -1,0 +1,153 @@
+/* ==========================================================================
+   ZINE — load after style.css
+   Neo-brutalist, in the bored.com lineage: hard black outlines, offset solid
+   shadows, dotted grid paper, chunky badges. Nothing glows and nothing is
+   soft — the opposite move from the CRT family, which is the point.
+   ========================================================================== */
+
+:root {
+  --paper:        #FFFCF2;
+  --surface:      #FFFFFF;
+  --surface-2:    #F1EEE2;
+  --ink:          #000000;
+  --ink-2:        #23211C;
+  --muted:        #635F52;
+  --line:         #000000;
+  --line-strong:  #000000;
+  --accent:       #1F4FE0;
+  --accent-soft:  #DCE4FF;
+  --signal:       #E0431F;
+
+  --font-display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif;
+  --font-body:    "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius: 8px;
+  --hard: 4px 4px 0 var(--ink);
+}
+
+html[data-theme="dark"] {
+  --paper:        #14130F;
+  --surface:      #1E1C17;
+  --surface-2:    #26241E;
+  --ink:          #FFFCF2;
+  --ink-2:        #E6E2D6;
+  --muted:        #A29D8E;
+  --line:         #FFFCF2;
+  --line-strong:  #FFFCF2;
+  --accent:       #8FA9FF;
+  --accent-soft:  #1E2440;
+  --signal:       #FF7A5C;
+  --hard:         4px 4px 0 var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --paper:        #14130F;
+    --surface:      #1E1C17;
+    --surface-2:    #26241E;
+    --ink:          #FFFCF2;
+    --ink-2:        #E6E2D6;
+    --muted:        #A29D8E;
+    --line:         #FFFCF2;
+    --line-strong:  #FFFCF2;
+    --accent:       #8FA9FF;
+    --accent-soft:  #1E2440;
+    --signal:       #FF7A5C;
+    --hard:         4px 4px 0 var(--ink);
+  }
+}
+
+/* No dot grid: drawn in currentColor it came out as hard black pinpricks and
+   fought the type. The hard outlines and offset shadows carry the look on
+   their own. */
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 6.5vw, 3.6rem);
+  letter-spacing: -0.03em;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink);
+  background: var(--accent-soft);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 3px 10px;
+}
+
+.section-head { border-top: 0; }
+
+/* ---- everything is a card with a hard shadow ---- */
+
+.focus-card,
+.panel,
+.earlier,
+.pub-media {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--hard);
+  background: var(--surface);
+}
+
+.focus-card,
+.panel { transition: transform .12s ease, box-shadow .12s ease; }
+.focus-card:hover,
+.panel:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+
+.portrait {
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--hard);
+}
+
+.links a {
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+.links a:hover {
+  background: var(--accent);
+  color: var(--paper);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.chip-venue {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.pub-title { font-family: var(--font-display); font-weight: 700; }
+
+.nav { border-bottom: 2px solid var(--ink); }
+.nav-name { font-family: var(--font-display); font-weight: 800; }
+
+.theme-btn,
+.sound-btn { border: 2px solid var(--ink); border-radius: 6px; }
+
+.role-body li::before { border-radius: 2px; background: var(--ink); }
+
+.earlier > summary { font-weight: 600; }
+
+/* chunky to match the hard edges everywhere else */
+.wave-rule {
+  animation: wave-flow 11s steps(24) infinite;
+  background-color: var(--ink);
+  opacity: 1;
+}
+
+/* fun-modes bar sits under the nav's own heavy rule, so it needs no second one */
+.skinbanner { border-bottom: 0; }

@@ -1,0 +1,200 @@
+/* ==========================================================================
+   ARCADE — load after style.css
+   Full CRT cabinet: scanlines, neon, phosphor glow. Dark only, because a
+   cathode ray tube has no light mode.
+   Body copy stays in a real sans — even in here, nobody should have to
+   decode a paper title.
+   ========================================================================== */
+
+html:root,
+html[data-theme="dark"],
+html[data-theme="light"] {
+  --paper:        #0A0612;
+  --surface:      #140C24;
+  --surface-2:    #1B1030;
+  --ink:          #F2E9FF;
+  --ink-2:        #D6C6F5;
+  --muted:        #9C86C4;
+  --line:         #2E1F4D;
+  --line-strong:  #6A47B8;
+  --accent:       #FF3FA4;
+  --accent-soft:  #2A0F35;
+  --signal:       #34E7E4;
+  --coin:         #FFC846;
+
+  --glow-name:     0 0 6px  rgba(255, 63, 164, 0.85),
+                   0 0 22px rgba(255, 63, 164, 0.55),
+                   0 0 44px rgba(255, 63, 164, 0.30);
+  --glow-cyan:     0 0 10px rgba(52, 231, 228, 0.7);
+  --glow-head:     0 0 10px rgba(52, 231, 228, 0.55);
+  --glow-portrait: 0 0 18px rgba(52, 231, 228, 0.35);
+  --glow-hover:    0 0 16px rgba(255, 63, 164, 0.65);
+  /* a list item, so it fades to transparent rather than to none */
+  --glow-coin:     0 0 14px rgba(255, 200, 70, 0.75);
+
+  --font-display: "Silkscreen", "Courier New", monospace;
+  --font-body:    "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius: 0px;
+  color-scheme: dark;
+}
+
+/* The toggle would otherwise do nothing, since a cabinet has no light mode.
+   It cuts the neon instead — the cabinet with the tube dimmed. Colours,
+   scanlines and the coin all stay; only the bloom goes. */
+html[data-theme="light"] {
+  --glow-name:     none;
+  --glow-cyan:     none;
+  --glow-head:     none;
+  --glow-portrait: none;
+  --glow-hover:    none;
+  --glow-coin:     0 0 0 rgba(255, 200, 70, 0);
+}
+
+/* ---- CRT surface ----
+   Scanlines live in the page background, not as a film over the top, so
+   anything opaque sits above them. Figures, posters and video stay clean —
+   a cabinet screen ruled across your benchmark numbers helps nobody. Text has
+   no background of its own, so the lines still run behind every line of type. */
+
+body {
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.30) 0 1px,
+      rgba(0, 0, 0, 0.00) 1px 3px),
+    radial-gradient(ellipse at 50% 45%,
+      rgba(0, 0, 0, 0) 55%,
+      rgba(0, 0, 0, 0.48) 100%);
+  background-attachment: fixed, fixed;
+}
+
+/* transparent so the scanlines carry through the cards too */
+.focus-card,
+.panel,
+.earlier,
+.links a { background: transparent; }
+
+/* opaque backing is what masks the lines behind media */
+.pub-media { background: #0A0612; }
+
+/* ---- neon headline ---- */
+
+.hero-name {
+  font-weight: 700;   /* Silkscreen has 400 and 700; pin it */
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: var(--glow-name);
+}
+
+/* A coin blinking beside the name, the way a cabinet waits for you to drop one.
+   Drawn rather than set as a glyph, so it stays a circle in every font. */
+.hero-name::after {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-left: 0.24em;
+  vertical-align: 0.08em;
+  border-radius: 50%;
+  background: var(--coin);
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 0 0 4px var(--coin),
+    var(--glow-coin);
+  animation: coin 1.15s steps(2, start) infinite;
+}
+
+@keyframes coin { to { visibility: hidden; } }
+
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  color: var(--signal);
+  text-shadow: var(--glow-cyan);
+}
+
+.section-head h2 {
+  color: var(--signal);
+  text-shadow: var(--glow-head);
+}
+
+.pub-title,
+.focus-card h3,
+.role-org { font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+
+/* ---- cabinet edges ---- */
+
+.focus-card,
+.panel,
+.earlier,
+.pub-media,
+.links a,
+.chip,
+.sound-btn,
+.theme-btn,
+.portrait { border-radius: 0; }
+
+.focus-card,
+.panel,
+.earlier { border: 2px solid var(--line-strong); }
+
+.pub-media { border: 2px solid var(--line-strong); }
+
+.portrait {
+  border: 3px solid var(--signal);
+  box-shadow: var(--glow-portrait);
+}
+
+.links a {
+  border: 2px solid var(--line-strong);
+  color: var(--ink);
+}
+.links a:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: var(--glow-hover);
+}
+
+.chip-venue {
+  border: 2px solid var(--accent);
+  background: none;
+  color: var(--accent);
+}
+
+.role-body li::before {
+  border-radius: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--signal);
+}
+
+/* ---- the divider becomes a live level meter ---- */
+
+.wave-rule {
+  background: linear-gradient(90deg, var(--signal), var(--accent), var(--signal));
+  background-size: 240px 100%;
+  opacity: 0.95;
+  animation: meter 6s linear infinite;
+}
+
+@keyframes meter {
+  from { -webkit-mask-position: 0 center;      mask-position: 0 center; }
+  to   { -webkit-mask-position: 240px center;  mask-position: 240px center; }
+}
+
+/* ---- insert coin ---- */
+
+.footer::before {
+  content: "◆ INSERT COIN ◆";
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  color: var(--coin);
+  letter-spacing: 0.1em;
+  animation: blink 1.15s steps(2, start) infinite;
+}
+
+@keyframes blink { to { visibility: hidden; } }

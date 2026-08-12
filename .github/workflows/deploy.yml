@@ -1,0 +1,62 @@
+# Deploys the site and stamps index.html with the date the CV PDF was last
+# changed, read from git history. Requires Settings → Pages → Source =
+# "GitHub Actions". If you never enable this, the site still works — the stamp
+# line just stays hidden.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # full history, or git log has nothing to read
+
+      - name: Assemble site and stamp the CV date
+        run: |
+          set -euo pipefail
+          CV="data/Apoorv_Vyas_CV.pdf"
+
+          # Commit date of the last change to the PDF itself — not the last
+          # time anything on the site changed.
+          DATE="$(git log -1 --format=%cI -- "$CV" || true)"
+          if [ -z "$DATE" ]; then
+            echo "No history for $CV yet; falling back to today."
+            DATE="$(date -u +%FT%TZ)"
+          fi
+          PRETTY="$(date -u -d "$DATE" +'%B %Y')"
+
+          mkdir -p _site
+          rsync -a --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
+          sed -i "s|<!--CV_UPDATED-->|CV last updated $PRETTY|" _site/index.html
+
+          echo "Stamped: $PRETTY"
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

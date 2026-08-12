@@ -69,7 +69,11 @@ body { font-size: 15px; line-height: 1.68; }
 
 .section-head h2::before { content: "## "; opacity: 0.55; }
 
-.nav-links a::before { content: "/"; opacity: 0.45; margin-right: 1px; }
+/* Inline only when the row is not spread (mobile). When it is spread the
+   slash becomes the separator glyph instead, so it sits in the gap and adds
+   no width — otherwise it would throw off the measured alignment. */
+.nav-links:not(.nav-spread) a::before { content: "/"; opacity: 0.45; margin-right: 1px; }
+.nav-links { --nav-sep: "/"; }
 
 .pub-links a::before { content: "→ "; opacity: 0.55; }
 

@@ -194,6 +194,13 @@ html[data-theme="dark"] .theme-btn .icon-light { display: none; }
   .nav-links { gap: 14px; }
 }
 
+/* Below ~430px the name, five links and the toggle no longer fit on one line,
+   and the links do not wrap — so the navbar would run off the screen. Drop the
+   longest label; Research and CV are the two worth keeping. */
+@media (max-width: 560px) {
+  .nav-links .nav-opt-sm { display: none; }
+}
+
 /* --------------------------------------------------------------- hero ---- */
 
 .hero { padding-top: 60px; }

@@ -72,14 +72,25 @@
     injected.forEach(function (n) { n.remove(); });
     injected = [];
 
+    /* Re-align once each sheet has actually applied. Terminal (and Console and
+       Phosphor, which load it) set --max to 920px instead of 880px, so the
+       container resizes after the link lands — measuring on the next frame
+       alone would bake in the old width and leave the two rows misaligned. */
+    function onApplied(node) {
+      node.addEventListener("load", alignSoon);
+      node.addEventListener("error", alignSoon);
+    }
+
     if (skin.font) {
       var f = document.createElement("link");
       f.rel = "stylesheet"; f.href = skin.font;
+      onApplied(f);
       document.head.appendChild(f); injected.push(f);
     }
     skin.sheets.forEach(function (href) {
       var l = document.createElement("link");
       l.rel = "stylesheet"; l.href = href;
+      onApplied(l);
       document.head.appendChild(l); injected.push(l);
     });
 
@@ -164,10 +175,16 @@
       ".skinbanner .skinbtn .skinsw{width:8px;height:8px}",
       /* separator dots, centred in the gap; only once the row is spread */
       ".nav-links.nav-spread a{position:relative}",
-      '.nav-links.nav-spread a + a::before{content:"\\00B7";position:absolute;',
+      '.nav-links.nav-spread a + a::before{content:var(--nav-sep,"\\00B7");position:absolute;',
       "left:calc(-1 * var(--nav-gap) / 2);top:50%;",
       "transform:translate(-50%,-50%);color:var(--line-strong);",
       "opacity:.6;pointer-events:none}",
+
+      /* one swipeable row beats two stacked ones on a phone, and the active
+         skin is first in the list so it is visible before any scrolling */
+      "@media(max-width:760px){.skinbanner-in{flex-wrap:nowrap;overflow-x:auto;",
+      "padding-right:var(--gutter);scrollbar-width:none;-ms-overflow-style:none}",
+      ".skinbanner-in::-webkit-scrollbar{display:none}}",
 
       "@media(prefers-reduced-motion:reduce){.skinrow.hint .skinsw{animation:none}",
       ".skinsw:hover{transform:none}}"
@@ -299,27 +316,40 @@
     var inner = bannerEl && bannerEl.querySelector(".skinbanner-in");
     if (!links || !inner) return;
 
-    links.classList.remove("nav-spread");
+    function bail() {
+      links.classList.remove("nav-spread");
+      links.style.gap = "";
+      links.style.flex = "";
+      links.style.marginRight = "";
+      links.style.removeProperty("--nav-gap");
+    }
+
+    /* Measure in the state that will actually apply. Terminal puts an inline
+       "/" before every link; spreading swaps those for absolutely-positioned
+       separators that take no space. Measuring first would count width that is
+       about to vanish, and the row would land ~30px short. */
+    links.classList.add("nav-spread");
     links.style.gap = "";
     links.style.flex = "";
     links.style.marginRight = "";
     links.style.removeProperty("--nav-gap");
-    if (window.innerWidth < 760) return;          /* stacked: leave default */
+
+    if (window.innerWidth < 760) { bail(); return; }
 
     var first = inner.firstElementChild;          /* the FUN MODES label */
-    if (!first) return;
+    if (!first) { bail(); return; }
     var name = document.querySelector(".nav-name");
 
     var target = first.getBoundingClientRect().left;
     var box    = links.getBoundingClientRect();
     var guard  = name ? name.getBoundingClientRect().right + 28 : 0;
 
-    /* if the banner is wide enough to reach under the name, leave well alone */
-    if (target < guard) return;
+    /* if the banner reaches under the name, leave well alone */
+    if (target < guard) { bail(); return; }
 
     var width = box.right - target;
     var n = links.children.length;
-    if (width <= box.width || n < 2) return;
+    if (width <= box.width || n < 2) { bail(); return; }
 
     /* An explicit gap rather than space-between: the separator dots need a
        known distance to sit in the middle of. */
@@ -330,7 +360,6 @@
     links.style.flex = "none";
     links.style.gap = gap + "px";
     links.style.setProperty("--nav-gap", gap + "px");
-    links.classList.add("nav-spread");
   }
 
   var alignTimer = null;
@@ -357,6 +386,15 @@
     sync();
     alignNav();
     window.addEventListener("resize", alignSoon);
+
+    /* Belt and braces: catch any geometry change at all — a late webfont, a
+       skin swapping --max, a scrollbar appearing. */
+    if ("ResizeObserver" in window) {
+      var ro = new ResizeObserver(alignSoon);
+      var nav = document.querySelector(".nav-inner");
+      if (nav) ro.observe(nav);
+      if (bannerEl) ro.observe(bannerEl);
+    }
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignNav);
   }
 

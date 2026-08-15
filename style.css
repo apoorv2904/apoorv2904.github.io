@@ -198,7 +198,16 @@ html[data-theme="dark"] .theme-btn .icon-light { display: none; }
 /* Below ~430px the name, five links and the toggle no longer fit on one line,
    and the links do not wrap — so the navbar would run off the screen. Drop the
    longest label; Research and CV are the two worth keeping. */
+/* Below this the nav name is dropped rather than a link: the name is already
+   in the hero one line down at four times the size, so it is the same
+   information twice, and it costs ~95px that Publications can use instead. */
 @media (max-width: 620px) {
+  .nav-name { display: none; }
+  .nav-links { margin-right: auto; }
+}
+
+/* Only on genuinely tiny screens does Publications have to go. */
+@media (max-width: 360px) {
   .nav-links .nav-opt-sm { display: none; }
 }
 

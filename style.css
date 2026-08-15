@@ -136,7 +136,7 @@ img, video { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 20px;
-  height: 52px;
+  min-height: 52px;   /* not height: anything taller would be clipped */
 }
 
 .nav-name {
@@ -157,6 +157,7 @@ img, video { max-width: 100%; display: block; }
 }
 
 .nav-links a {
+  white-space: nowrap;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
@@ -189,7 +190,7 @@ html[data-theme="dark"] .theme-btn .icon-light { display: none; }
   html:not([data-theme="light"]) .theme-btn .icon-light { display: none; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .nav-links .nav-opt { display: none; }
   .nav-links { gap: 14px; }
 }
@@ -197,8 +198,20 @@ html[data-theme="dark"] .theme-btn .icon-light { display: none; }
 /* Below ~430px the name, five links and the toggle no longer fit on one line,
    and the links do not wrap — so the navbar would run off the screen. Drop the
    longest label; Research and CV are the two worth keeping. */
-@media (max-width: 560px) {
+@media (max-width: 620px) {
   .nav-links .nav-opt-sm { display: none; }
+}
+
+/* Last resort: if a label set is still too wide on some device I cannot test,
+   the row scrolls rather than clipping. Nothing is ever cut off. */
+@media (max-width: 760px) {
+  .nav-links {
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
 }
 
 /* --------------------------------------------------------------- hero ---- */

@@ -198,12 +198,14 @@ html[data-theme="dark"] .theme-btn .icon-light { display: none; }
 /* Below ~430px the name, five links and the toggle no longer fit on one line,
    and the links do not wrap — so the navbar would run off the screen. Drop the
    longest label; Research and CV are the two worth keeping. */
-/* Below this the nav name is dropped rather than a link: the name is already
-   in the hero one line down at four times the size, so it is the same
-   information twice, and it costs ~95px that Publications can use instead. */
+/* Phones keep the name but lose the surname — it is in the hero one line
+   down, and the ~48px it frees is what Publications needs. Keeping the name
+   visible also matters because konami.js uses five taps on it as its touch
+   trigger; hiding it would kill the easter egg on mobile. */
 @media (max-width: 620px) {
-  .nav-name { display: none; }
-  .nav-links { margin-right: auto; }
+  .nav-surname { display: none; }
+  .nav-inner { gap: 14px; }
+  .nav-links { gap: 12px; }
 }
 
 /* Only on genuinely tiny screens does Publications have to go. */
